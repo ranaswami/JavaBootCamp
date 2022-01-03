@@ -20,7 +20,9 @@ public class SortedMatrixSearch {
 
     }
 
-    static int[] binarySearch(int[][] matrix, int row)
+    static int[] binarySearch(int[][] matrix, int row) {
+        return new int[0];
+    }
 
     static int[] sortedMatrixSearch(int[][] matrix, int target){
 
