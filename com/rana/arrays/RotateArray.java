@@ -5,9 +5,9 @@ import java.util.Arrays;
 public class RotateArray {
 
     public static void main(String[] args) {
-        int[] nums = {1,2,3,4,5,6,7};
+        int[] nums = {-1,-100,3,99};
 
-        System.out.println(Arrays.toString(moveByOne(nums,3)));
+        System.out.println(Arrays.toString(rotateArray1(nums,2)));
     }
     static void rotateArray(int[] nums, int k) {
         int[] res = new int[nums.length];
@@ -30,6 +30,21 @@ public class RotateArray {
             }
             nums[0] = temp;
         }
+        return nums;
+    }
+    static int[] rotateArray1(int[] nums,int k){
+        k %= nums.length;
+        for (int i = nums.length - k,j = 0; i < nums.length; i++,j++) {
+            int temp = nums[j];
+            nums[j] = nums[i];
+            nums[i] = temp;
+        }
+
+        int temp = nums[k];
+        for (int index = k; index <=nums.length - 2; index++) {
+            nums[index] = nums[index+1];
+        }
+        nums[nums.length - 1] = temp;
         return nums;
     }
 }
