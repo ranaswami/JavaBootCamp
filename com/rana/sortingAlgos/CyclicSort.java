@@ -17,9 +17,8 @@ public class CyclicSort {
             int correctIndex = arr[i] - 1;
             if(arr[i] != arr[correctIndex]){
                 swap(arr, i, correctIndex);
-            } else {
-                i++;
             }
+            i++;
         }
     }
 
