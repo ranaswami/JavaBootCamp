@@ -1,5 +1,5 @@
 package com.rana.strings;
-
+//https://leetcode.com/problems/merge-strings-alternately/
 public class MergeAlternately {
 
     public static void main(String[] args) {
@@ -10,14 +10,12 @@ public class MergeAlternately {
     static String mergeAlternately(String word1, String word2) {
         StringBuilder b = new StringBuilder();
 
-        for (int i = 0, j = 0, k = 0; i < (word1.length() + word2.length()); i++, j++, k++) {
-            if (i % 2 == 0 && i < word1.length()) {
-                b.append(word1.charAt(j));
-                k--;
+        for (int i = 0; i < (word1.length() + word2.length()); i++) {
+            if (i < word1.length()){
+                b.append(word1.charAt(i));
             }
-            else if (i % 2 == 1 && i < word2.length()) {
-                b.append(word2.charAt(k));
-                j--;
+            if (i < word2.length()){
+                b.append(word2.charAt(i));
             }
         }
 
