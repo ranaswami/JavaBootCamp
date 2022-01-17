@@ -9,6 +9,8 @@ public class ReversePrefix {
         System.out.println(reversePrefix(word,ch));
     }
     static String reversePrefix(String word, char ch) {
+        if (word == null || word.length() == 0 || word.indexOf(ch) == -1)
+            return word;//corner case
         StringBuilder b = new StringBuilder();
 
         int index = word.indexOf(ch);
