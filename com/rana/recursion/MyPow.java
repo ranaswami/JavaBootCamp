@@ -4,8 +4,10 @@ public class MyPow {
 
     public static void main(String[] args) {
         System.out.println(myPow(3,9));
+        System.out.println(myPow2(3,8));
     }
     static double myPow2(double x, int n) {
+        //using iteration
         double res = 1;
         if (n < 0){
             n = n * -1;
@@ -23,6 +25,7 @@ public class MyPow {
     }
 
     static double myPow(double x, int n){
+        //using recursion
         double res = 1;
         if (n==0){
             return res;
