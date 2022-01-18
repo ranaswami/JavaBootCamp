@@ -1,5 +1,5 @@
 package com.rana.recursion;
-
+//https://leetcode.com/problems/power-of-two/
 public class IsPowerOfTwo {
 
     public static void main(String[] args) {
