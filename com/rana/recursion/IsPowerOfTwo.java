@@ -5,7 +5,7 @@ public class IsPowerOfTwo {
     public static void main(String[] args) {
 
         System.out.println(isPowerOfTwo(8));
-        System.out.println(isPowerOfTwo(9));
+        System.out.println(isPowerOfTwo1(16));
 
     }
     static boolean isPowerOfTwo(int n) {//Brian Kernighan's algo:
@@ -16,5 +16,11 @@ public class IsPowerOfTwo {
             return true;
         else
             return false;
+    }
+    static boolean isPowerOfTwo1(int n){//using recursion
+        if (n == 0) return false;
+        if (n == 1) return true;
+        if (n % 2 == 0) return isPowerOfTwo(n / 2);
+        else return false;
     }
 }

@@ -17,7 +17,7 @@ public class SumTriangleFromArray {
 
         int[] temp = new int[arr.length - 1];//initializing a new temp array on length - 1 than the previous array paased
 
-        for (int i = 0;i < arr.length - 1;i++){//assigning values to the newly created temp array
+        for (int i = 0;i < temp.length;i++){//assigning values to the newly created temp array (temp.length or arr.length - 1)
             int x = arr[i] + arr[i + 1];
             temp[i] = x;
         }
