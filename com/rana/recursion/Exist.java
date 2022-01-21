@@ -13,8 +13,8 @@ public class Exist {
         System.out.println(exist(board, word));
     }
     static boolean exist(char[][] board, String word) {//we have to look through the grid and if we ever find the first letter of the word
-        //then we have to implement DFS on that particular cell and if are able to find all the characters of the given word, we return true else
-        //false.
+        //then we have to implement DFS on that particular cell and if are able to find all the characters of the given word, we return true or else
+        //we return false.
         for (int i = 0; i < board.length; i++){
             for (int j = 0; j < board[0].length; j++) {
                 if (board[i][j] == word.charAt(0) && dfs(board, i, j ,0, word)) {
