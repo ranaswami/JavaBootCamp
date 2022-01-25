@@ -27,7 +27,7 @@ public class SearchRange {
 
             if (nums[mid] == target){
                 first = mid;
-                end = mid - 1;
+                end = mid - 1;//this step will make sure we remain in the first half of the first occurence of the target
             }
             else if (nums[mid] < target)
                 start = mid + 1;
@@ -39,7 +39,7 @@ public class SearchRange {
 
             if (nums[mid] == target){
                 last = mid;
-                low = mid + 1;
+                low = mid + 1;//this step will make sure we remain in the second half of the first occurence of the target
             }
             else if (nums[mid] < target)
                 low = mid + 1;
