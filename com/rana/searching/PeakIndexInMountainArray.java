@@ -1,5 +1,5 @@
 package com.rana.searching;
-
+//https://leetcode.com/problems/peak-index-in-a-mountain-array/
 public class PeakIndexInMountainArray {
     public static void main(String[] args) {
         //int[] arr = {3,1,2};
