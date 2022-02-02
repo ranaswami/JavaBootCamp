@@ -1,37 +1,36 @@
-package com.rana.sortingAlgos;
+package com.rana.searchingAlgos;
 
 import java.util.Arrays;
 
 public class SelectionSort {
-
     public static void main(String[] args) {
-        // write your code here
-
-        int[] arr={5,4,3,2,1};
-        selectionSort(arr);
-        System.out.println(Arrays.toString(arr));
+        int[] nums = {5,4,3,2,1};
+        selectionSort(nums);
     }
-
-    static void selectionSort(int[] arr){
-        for (int i = 0; i < arr.length; i++) {
-            //find the max element in the remaining array and swap with correct index
-            int last = arr.length - i - 1;
-            int maxIndex = getMaxIndex(arr, 0, last);
-            swap(arr, maxIndex, last);
+    static void selectionSort (int[] nums){
+        for (int i = 0; i < nums.length; i++) {
+            //find the max item in the remaining array and swap it with the correct index
+            int lastIndex = nums.length - i - 1;
+            int maxIndex = getMaxIndex(nums, 0, lastIndex);
+            swap(nums, maxIndex, lastIndex);
         }
+        System.out.println(Arrays.toString(nums));
     }
-    static void swap(int[] arr, int first, int second){
-        int temp = arr[first];
-        arr[first] = arr[second];
-        arr[second] = temp;
-    }
-    static int getMaxIndex(int[] arr, int start, int end) {
+
+    static int getMaxIndex(int[] nums, int start, int end) {
         int max = start;
-        for (int i = start; i <= end ; i++) {
-            if(arr[max] < arr[i]){
+
+        for (int i = start; i <= end; i++) {
+            if (nums[max] < nums[i]){
                 max = i;
             }
         }
         return max;
+    }
+
+    static void swap(int[] nums, int first, int second){
+        int temp = nums[first];
+        nums[first] = nums[second];
+        nums[second] = temp;
     }
 }
