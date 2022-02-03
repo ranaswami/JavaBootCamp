@@ -9,5 +9,9 @@ public class Main {
         BoxWeight b1 = new BoxWeight();
         BoxWeight b2 = new BoxWeight(2,3,4,5);
         System.out.println(b1.h+" "+b1.weight);
+        System.out.println(b2.weight);
+
+        Box b3 = new BoxWeight(2,3,4,8);
+        System.out.println(b3.w);
     }
 }

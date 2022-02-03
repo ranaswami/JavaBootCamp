@@ -12,10 +12,10 @@ public class CyclicSort {
 
     }
     static void cyclicSort(int[] arr){
-        int i = 0;
+        int i = 0;//check, swap, move; that's all.
         while (i < arr.length){
-            int correctIndex = arr[i] - 1;
-            if(arr[i] != arr[correctIndex]){
+            int correctIndex = arr[i] - 1;//correctIndex = value - 1;
+            if(arr[i] != arr[correctIndex]){//if the value at that particular index is not as it should be, SWAP with the value at the correctIndex
                 swap(arr, i, correctIndex);
             }
             i++;
