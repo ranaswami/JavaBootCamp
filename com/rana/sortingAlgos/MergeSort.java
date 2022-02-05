@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class MergeSort {
     public static void main(String[] args) {
-        int[] a = {5,4,3,2,1};
-        //a = mergeSort(a);
-        mergeSortInPlace(a,0, a.length);
+        int[] a = {-1,0,1,2,-1,-4};
+        a = mergeSort(a);
+        //mergeSortInPlace(a,0, a.length);
         System.out.println(Arrays.toString(a));
     }
     static int[] mergeSort(int[] nums){

@@ -73,7 +73,7 @@ public class ThreeSum {
 
         if(nums.length == 0)
             return res;
-        
+
         int[] arr = mergeSort(nums);
 
         for (int i = 0; i < arr.length - 2; i++) {//because our a can go to 3rd last element in the array
