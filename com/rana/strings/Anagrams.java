@@ -32,8 +32,8 @@ public class Anagrams {
         }
         Set<Character> keys = map.keySet();
 
-        for (Character key : keys) {
-            if (map.get(key) != 0)
+        for (Character c : keys) {
+            if (map.get(c) != 0)
                 return false;
         }
         return true;
