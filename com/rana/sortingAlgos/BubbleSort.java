@@ -1,4 +1,4 @@
-package com.rana.searchingAlgos;
+package com.rana.sortingAlgos;
 
 import java.util.Arrays;
 
