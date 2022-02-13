@@ -1,8 +1,6 @@
 package com.rana.sorting;
-
-import java.util.ArrayList;
+//https://leetcode.com/problems/3sum-closest/
 import java.util.Arrays;
-import java.util.List;
 
 public class ThreeSumClosest {
     public static void main(String[] args) {
