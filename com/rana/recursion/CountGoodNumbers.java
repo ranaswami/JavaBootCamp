@@ -1,5 +1,6 @@
 package com.rana.recursion;
 //https://leetcode.com/problems/count-good-numbers/
+//Explanation: https://leetcode.com/problems/count-good-numbers/discuss/1317451/Java-or-Step-by-Step-clear-Explanation-with-Pictures-or-O(logN)
 public class CountGoodNumbers {
     public static void main(String[] args) {
         long n = 50;
