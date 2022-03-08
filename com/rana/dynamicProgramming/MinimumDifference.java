@@ -1,10 +1,14 @@
 package com.rana.dynamicProgramming;
-
+//https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/
+//Minimum Subset Sum Difference
 import java.util.ArrayList;
 import java.util.List;
 
 public class MinimumDifference {
     public static void main(String[] args) {
+
+        int[] arr = {3,9,7,3};
+        System.out.println(minimumDifference(arr));
 
     }
     static int minimumDifference(int[] nums) {
