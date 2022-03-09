@@ -13,9 +13,17 @@ public class CoinChange {
         for (int i = 0; i < t[0].length; i++) {//1st row
             t[0][i] = Integer.MAX_VALUE - 1;
         }
-
+        /**
         for (int i = 1; i < t[0].length; i++) {//2nd row
             t[1][i] = Integer.MAX_VALUE - 1;
+        }
+        */
+        for (int i = 1, j = 1; j < t[0].length; j++) {//2nd row
+            if (j % coins[0] == 0){
+                t[i][j] = j / coins[0];
+            }
+            else
+                t[i][j] = Integer.MAX_VALUE - 1;
         }
 
         for (int i = 1; i < t.length; i++) {//1st column
