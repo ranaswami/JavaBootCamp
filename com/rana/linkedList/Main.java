@@ -1,0 +1,19 @@
+package com.rana.linkedList;
+
+public class Main {
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+
+        list.insertFirst(3);
+        list.insertFirst(31);
+        list.insertFirst(13);
+        list.insertFirst(5);
+
+        list.insertLast(9);
+
+        list.insert(12, 3);
+
+        list.display();
+
+    }
+}
