@@ -14,6 +14,12 @@ public class Main {
         list.insert(12, 3);
 
         list.display();
+        System.out.println(list.deleteFirst());
+        list.display();
+        System.out.println(list.deleteLast());
+        list.display();
+        System.out.println(list.deleteIndex(2));
+        list.display();
 
     }
 }
