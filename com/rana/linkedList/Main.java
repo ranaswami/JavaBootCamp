@@ -2,7 +2,7 @@ package com.rana.linkedList;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
+        ArtificialLinkedList list = new ArtificialLinkedList();
 
         list.insertFirst(3);
         list.insertFirst(31);

@@ -1,13 +1,13 @@
 package com.rana.linkedList;
 
-public class LinkedList {
+public class ArtificialLinkedList {
 
     private Node head;
     private Node tail;
 
     private int size;
 
-    public LinkedList() {
+    public ArtificialLinkedList() {
         this.size = 0;
     }
 
@@ -102,6 +102,68 @@ public class LinkedList {
         return null;
     }
 
+    public Node mergeTwoLists(Node list1, Node list2){
+        /**
+         *
+         int size1 = getSize(list1);// iterative way to solve
+        int size2 = getSize(list2);
+        //int size = size1+size2;
+
+        int i = 0, j = 0;
+
+        Node head = new Node(0);
+        Node handler = head;
+
+        while (i < size1 && j < size2){
+            if (list1.val <= list2.val){
+                handler.next = list1;
+                list1 = list1.next;
+                i++;
+            } else {
+                handler.next = list2;
+                list2 = list2.next;
+                j++;
+            }
+            handler = handler.next;
+        }
+        if (i < size1){
+            handler.next = list1;
+        }
+        else if (j < size2){
+            handler.next = list2;
+        }
+        return head.next;
+        */
+
+        if (list1 == null) return list2;//recursive approach to solve the question
+        if (list2 == null) return list1;
+
+        Node head;
+
+        if (list1.val < list2.val){
+            head = list1;
+            head.next = mergeTwoLists(list1.next, list2);
+        } else {
+            head = list2;
+            head.next = mergeTwoLists(list1, list2.next);
+        }
+
+        return head;
+
+    }
+
+    public int getSize(Node head){
+        if (head == null)
+            return 0;
+
+        Node temp = head;
+        int count = 0;
+        while (temp != null){
+            count++;
+            temp = temp.next;
+        }
+        return count;
+    }
 
     public Node get(int index){//to get the node at a particular index
         Node node = head;
