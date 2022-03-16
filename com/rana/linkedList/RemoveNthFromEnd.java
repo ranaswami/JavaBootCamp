@@ -19,7 +19,7 @@ public class RemoveNthFromEnd {
             this.size = 0;
         }
 
-        ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode removeNthFromEnd(ListNode head, int n) { //https://leetcode.com/problems/remove-nth-node-from-end-of-list/
             int size = getSize(head);
             if (size <= 1 || size == n){
                 return head.next;
@@ -51,7 +51,7 @@ public class RemoveNthFromEnd {
             return count;
         }
 
-        ListNode middleNode(ListNode head) {
+        ListNode middleNode(ListNode head) { //https://leetcode.com/problems/middle-of-the-linked-list/
             int size = getSize(head);
             ListNode temp = head;
             for (int i = 0; i < size/2; i++) {
@@ -70,6 +70,29 @@ public class RemoveNthFromEnd {
                 temp = temp.next;
             }
             return sum;
+        }
+
+        boolean isPalindrome(ListNode head) { //https://leetcode.com/problems/palindrome-linked-list/
+            ListNode temp = new ListNode(head.val);
+            ListNode newHead = temp;
+            ListNode curr = head.next;
+            while (curr != null){
+                temp.next = new ListNode(curr.val);
+                curr = curr.next;
+                temp = temp.next;
+            }
+
+            newHead = reverseList(newHead);
+
+            while (newHead != null){
+                if(newHead.val != head.val){
+                    return false;
+                }
+                //System.out.print(newHead.val);
+                newHead = newHead.next;
+                head = head.next;
+            }
+            return true;
         }
 
         ListNode reverseList(ListNode head){
