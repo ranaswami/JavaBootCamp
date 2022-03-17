@@ -107,6 +107,101 @@ public class RemoveNthFromEnd {
             return prev;
         }
 
+        ListNode getIntersectionNode(ListNode headA, ListNode headB) { //https://leetcode.com/problems/intersection-of-two-linked-lists/
+            ListNode temp1 = headA;
+            ListNode temp2 = headB;
+
+            int lenA = getSize(temp1);
+            int lenB = getSize(temp2);
+
+            while (lenA > lenB){
+                temp1 = temp1.next;
+                lenA--;
+            }
+
+            while (lenA < lenB){
+                temp2 = temp2.next;
+                lenB--;
+            }
+
+            while (temp1 != temp2){
+                temp1 = temp1.next;
+                temp2 = temp2.next;
+                if (temp1 == null){
+                    return null;
+                }
+            }
+
+            return temp1;
+        }
+
+        ListNode getIntersectionNode1(ListNode headA, ListNode headB) {
+            if (headA == null || headB == null)
+                return null;
+
+            ListNode temp1 = headA;
+            ListNode temp2 = headB;
+            // if temp1 & temp2 have different length, then we will stop after 2nd iteration
+            while (temp1 != temp2){
+                //after the end of 1st iteration, we just reset the pointer to the head of another linked list
+                if (temp1 == null){
+                    temp1 = headB;
+                } else
+                    temp1 = temp1.next;
+
+                if (temp2 == null){
+                    temp2 = headA;
+                } else
+                    temp2 = temp2.next;
+            }
+            return temp1;
+        }
+
+        boolean hasCycle(ListNode head) {
+            if (head == null)
+                return false;
+
+            //Floyd’s Cycle-Finding Algorithm // fast slow approach // 2 pointers // "tortoise and the hare algorithm"
+            ListNode walker = head;
+            ListNode runner = head;
+            while (runner.next != null && runner.next.next != null){
+                walker = walker.next;
+                runner = runner.next.next;
+                if (walker == runner)
+                    return true;
+            }
+            return false;
+        }
+
+        ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+            ListNode temp1 = l1;
+            ListNode temp2 = l2;
+
+            ListNode dummy = new ListNode(0);
+            ListNode handler = dummy;
+
+            int carry = 0;
+
+            while (temp1 != null || temp2 != null || carry == 1){
+                int sum = 0;
+                if (temp1 != null){
+                    sum += temp1.val;
+                    temp1 = temp1.next;
+                }
+                if (temp2 != null){
+                    sum += temp2.val;
+                    temp2 = temp2.next;
+                }
+                sum += carry;
+                carry = sum/10;
+                ListNode nextNode = new ListNode(sum % 10);
+                handler.next = nextNode;
+                handler = handler.next;
+            }
+            return dummy.next;
+
+        }
+
         private class ListNode{
             private int val;
             private ListNode next;
