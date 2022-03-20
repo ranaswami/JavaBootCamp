@@ -1,4 +1,8 @@
 package com.rana.linkedList;
+
+import java.util.ArrayList;
+import java.util.List;
+
 //https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 //https://leetcode.com/problems/middle-of-the-linked-list/
 //https://leetcode.com/problems/palindrome-linked-list/
@@ -199,8 +203,49 @@ public class RemoveNthFromEnd {
                 handler = handler.next;
             }
             return dummy.next;
-
         }
+
+        ListNode removeElements(ListNode head, int val) {
+            ListNode dummy = new ListNode(0);
+            ListNode dummyhead = dummy;
+            ListNode node = head;
+            while( node != null)
+            {
+                if(node.val != val)
+                {
+                    dummy.next = new ListNode(node.val);
+                    dummy = dummy.next;
+                }
+
+                node = node.next;
+            }
+            return dummyhead.next;
+        }
+
+        void deleteIndex(ListNode head, int index, int size){
+            if (index == 0){
+                head = head.next;
+            }
+            else if (index == size-1){
+                ListNode tail = get(head, size-1);
+                ListNode secondLast = get(head, size-2);
+                tail = secondLast;
+                tail.next = null;
+            }
+            else {
+                ListNode prev = get(head, index-1);
+                prev.next = prev.next.next;
+            }
+        }
+
+        ListNode get(ListNode head, int index){
+            ListNode node = head;
+            for (int i = 0; i < index; i++) {
+                node = node.next;
+            }
+            return node;
+        }
+
 
         private class ListNode{
             private int val;
