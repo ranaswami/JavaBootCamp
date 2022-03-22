@@ -246,6 +246,96 @@ public class RemoveNthFromEnd {
             return node;
         }
 
+        ListNode addTwoNumbers1(ListNode l1, ListNode l2) { //https://leetcode.com/problems/add-two-numbers-ii/
+            ListNode list1 = reverseList(l1);
+            ListNode list2 = reverseList(l2);
+
+            ListNode res = addTwoNumbers(list1, list2);
+
+            ListNode finalRes = reverseList(res);
+
+            return finalRes;
+        }
+
+        ListNode deleteDuplicates(ListNode head) { //https://leetcode.com/problems/remove-duplicates-from-sorted-list/
+            if (head == null || head.next == null)
+                return head;
+            ListNode curr = head;
+            while (curr.next != null){
+                if (curr.next.val == curr.val){
+                    curr.next = curr.next.next;
+                } else {
+                    curr = curr.next;
+                }
+            }
+            return head;
+
+            /**
+             * Another approach
+            ListNode dummy = new ListNode(Integer.MIN_VALUE);
+            dummy.next = head;
+            ListNode prev = dummy;
+            ListNode curr = head;
+
+            while (curr != null){
+                if (curr.val == prev.val){
+                    prev.next = curr.next;
+                    curr = curr.next;
+                } else {
+                    prev = curr;
+                    curr = curr.next;
+                }
+            }
+            return dummy.next;
+             */
+
+        }
+
+        ListNode swapNodes(ListNode head, int k) {
+
+            ListNode slow = head;
+            ListNode fast = head;
+            ListNode n1 = head;
+            //finding n1
+            for (int i = 0; i < k-1; i++) {
+                fast = fast.next;
+                n1 = fast;
+            }
+            //finding n2 (i.e. slow)
+            while (fast.next != null){
+                slow = slow.next;
+                fast = fast.next;
+            }
+            int n1_val = n1.val;
+            n1.val = slow.val;
+            slow.val = n1_val;
+
+            return head;
+            /**
+            ListNode temp1 = head; //space and time complexity is O(n).
+            ListNode temp2 = head;
+            ArrayList<Integer> li = new ArrayList<>();
+            int count = 0;
+            while (temp1 != null){
+                li.add(temp1.val);
+                count++;
+            }
+            swap(k-1, count-k, li);
+            int i = 0;
+            while (i < count){
+                temp2.val = li.get(i);
+                i++;
+                temp2 = temp2.next;
+            }
+            return head;
+             */
+        }
+
+        void swap(int first, int second, ArrayList<Integer> li){
+            int temp = li.get(first);
+            li.set(first, li.get(second));
+            li.set(second, temp);
+        }
 
         private class ListNode{
             private int val;
