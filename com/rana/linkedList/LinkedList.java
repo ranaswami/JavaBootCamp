@@ -1,13 +1,16 @@
 package com.rana.linkedList;
 
-public class ArtificialLinkedList {
+import java.util.HashMap;
+import java.util.HashSet;
+
+public class LinkedList {
 
     private Node head;
     private Node tail;
 
     private int size;
 
-    public ArtificialLinkedList() {
+    public LinkedList() {
         this.size = 0;
     }
 
@@ -208,12 +211,82 @@ public class ArtificialLinkedList {
         return prev;
     }
 
+    Node copyRandomList1(Node head) { //https://leetcode.com/problems/copy-list-with-random-pointer/
+        HashMap<Node, Node> map = new HashMap<>();
+        Node curr = head;
+        Node dummy = new Node(0);
+        Node handler = dummy;
+
+        //initial iteration
+        while (curr != null){
+            Node node = new Node(curr.val);
+            handler.next = node;
+            map.put(curr, node);
+            handler = handler.next;
+            curr = curr.next;
+        }
+
+        //set starting point in both the lists
+        curr = head;
+        handler = dummy.next;
+
+        //setting the random pointer
+        /**
+        while (curr != null){ //this code snippet is also important, remove the comments for execution on LeetCode
+            if (curr.random != null)
+                handler.random = map.get(curr.random);
+            handler = handler.next;
+            curr = curr.next;
+        }
+        return dummy.next;
+         */
+        return dummy.next;
+
+    }
+
+    Node copyRandomList(Node head) { //https://leetcode.com/problems/copy-list-with-random-pointer/
+        Node cur = duplicate(head);
+        //setting random pointers of new nodes
+        while (cur != null){
+            if (cur.next != null){
+                cur.next.random = (cur.random != null) ? cur.random.next : null;
+            }
+            cur = cur.next.next;
+        }
+
+        Node orig = head, copy = head.next, temp = copy;
+        //separating both the lists
+        while (orig != null){
+            orig.next = orig.next.next;
+            copy.next = orig.next.next;
+            orig = orig.next;
+            copy = copy.next;
+        }
+        return temp;
+    }
+
+    //inserting new node in between
+    Node duplicate(Node head){
+        Node cur = head;
+
+        while (cur != null){
+            Node temp = cur.next;
+            cur.next = new Node(cur.val);
+            cur.next.next = temp;
+            cur = temp;
+        }
+        cur = head;
+        return cur;
+    }
+
     private class Node{
         private int val;
         private Node next;
+        private Node random;
 
         public Node(int val) {
             this.val = val;
+            this.random = null;
         }
 
         public Node(int val, Node next) {

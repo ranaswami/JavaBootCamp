@@ -6,6 +6,7 @@ import java.util.List;
 //https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 //https://leetcode.com/problems/middle-of-the-linked-list/
 //https://leetcode.com/problems/palindrome-linked-list/
+//https://leetcode.com/problems/sort-list/
 public class RemoveNthFromEnd {
 
     public static void main(String[] args) {
@@ -335,6 +336,107 @@ public class RemoveNthFromEnd {
             int temp = li.get(first);
             li.set(first, li.get(second));
             li.set(second, temp);
+        }
+
+        ListNode oddEvenList(ListNode head) { //https://leetcode.com/problems/odd-even-linked-list/
+            if (head == null)
+                return null;
+            else if (head.next == null)
+                return head;
+            else {
+                ListNode odd = head;
+                ListNode even = head.next;
+                ListNode evenHead = even;
+
+                while (even != null && even.next != null){
+                    odd.next = even.next;
+                    odd = odd.next;
+                    even.next = odd.next;
+                    even = even.next;
+                }
+                odd.next = evenHead;
+                return head;
+            }
+        }
+
+        ListNode swapPairs(ListNode head) { //https://leetcode.com/problems/swap-nodes-in-pairs/
+            return swapAdjacentNodes(head);
+        }
+
+        ListNode swapAdjacentNodes(ListNode head){
+            if (head == null || head.next == null)
+                return head;
+            ListNode first = head;
+            ListNode second = head.next;
+
+            ListNode tempList = swapAdjacentNodes(second.next);
+            first.next = tempList;
+            second.next = first;
+
+            return second;
+        }
+
+        ListNode sortList(ListNode head) { //https://leetcode.com/problems/sort-list/
+            //implementing the concept of merge sort
+            if (head == null || head.next == null)
+                return head;
+
+            ListNode slow = head, fast = head.next;
+
+            while (fast != null && fast.next != null){
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+            //dividing the list into two parts
+            fast = slow.next;
+            slow.next = null;
+
+            //sort and merge
+            ListNode l1 = sortList(head);
+            ListNode l2 = sortList(fast);
+
+            return mergeTwoLists(l1, l2);
+        }
+
+        ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+            /** //recursive approach
+            if (list1 == null) return list2;
+            if (list2 == null) return list1;
+
+            ListNode head;
+
+            if (list1.val < list2.val){
+                head = list1;
+                head.next = mergeTwoLists(list1.next, list2);
+            } else {
+                head = list2;
+                head.next = mergeTwoLists(list1, list2.next);
+            }
+
+            return head;
+            */
+
+            //The below code snippet is the iterative approach to merge two sorted linked list
+            ListNode head = new ListNode(0);
+            ListNode handler = head;
+            //iterative approach
+            while (list1 != null && list2 != null){
+                if (list1.val <= list2.val){
+                    handler.next = list1;
+                    list1 = list1.next;
+                } else {
+                    handler.next = list2;
+                    list2 = list2.next;
+                }
+                handler = handler.next;
+            }
+
+            if (list1 != null){
+                handler.next = list1;
+            } else if (list2 != null){
+                handler.next = list2;
+            }
+            return head.next;
         }
 
         private class ListNode{
