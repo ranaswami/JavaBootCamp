@@ -439,6 +439,30 @@ public class RemoveNthFromEnd {
             return head.next;
         }
 
+        ListNode reverseKGroup(ListNode head, int k) { //https://leetcode.com/problems/reverse-nodes-in-k-group/
+            return reverseInGroups(head, k);
+        }
+
+        ListNode reverseInGroups(ListNode head, int k) {
+            ListNode curr = head;
+            int currLen = 1;
+            if (head == null)
+                return head;
+            while (curr.next != null && currLen < k){
+                curr = curr.next;
+                currLen++;
+            }
+            if (currLen < k)
+                return head;
+            ListNode tempNode = curr.next;
+            curr.next = null;
+
+            ListNode tempList = reverseInGroups(tempNode, k);
+            ListNode prev = reverseList(head);
+            head.next = tempList;
+            return prev;
+        }
+
         private class ListNode{
             private int val;
             private ListNode next;
