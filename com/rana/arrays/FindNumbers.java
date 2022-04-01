@@ -7,6 +7,7 @@ public class FindNumbers {
         int[] nums = {555,901,482,1771};
 
         System.out.println(findNumbers(nums));
+        System.out.println(2^4);
 
     }
     static int  findNumbers(int[] nums) {
