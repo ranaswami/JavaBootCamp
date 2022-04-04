@@ -3,8 +3,8 @@ package com.rana.bitwise;
 public class SingleNumber2 {
     public static void main(String[] args) {
         int[] nums = {2,2,3,2};
-        //System.out.println((2 >> 1) & 1);
-        System.out.println(singleNumber(nums));
+        System.out.println(1 % 3);
+        //System.out.println(singleNumber(nums));
     }
     static int singleNumber(int[] nums) {
         int ans = 0;
