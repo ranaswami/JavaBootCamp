@@ -22,7 +22,7 @@ public class GroupAnagrams {
                 map.put(sorted, new ArrayList<>());
             }
 
-            map.get(sorted).add(currentString);//if the map doesn contain the sorted, add currentString as string in the hash map values.
+            map.get(sorted).add(currentString);//if the map doesn't contain the sorted, add currentString as string in the hash map values.
         }
         groupedAnagrams.addAll(map.values());//add all the map values
         return groupedAnagrams;
