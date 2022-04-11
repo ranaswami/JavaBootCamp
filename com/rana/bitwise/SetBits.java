@@ -11,13 +11,13 @@ public class SetBits {
     private static int setBits(int n) {
         int count = 0;
         /**
-        while (n > 0){
+        while (n != 0){
             count++;
             //n & (-n) returns the right most set bit.
             n = n - (n & (-n));
         }
         */
-        while (n > 0){
+        while (n != 0){
             count++;
             n = n & (n-1);
         }
