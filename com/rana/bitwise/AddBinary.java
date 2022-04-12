@@ -18,9 +18,9 @@ public class AddBinary {
             if(j>=0){
                 carry+=b.charAt(j)-'0';
             }
-            char ch = (char)(carry%2+'0'); //if there is carry ? then add 1
+            char ch = (char)(carry % 2 + '0'); //if there is carry ? then add 1
             str.append(ch);
-            carry/=2; // carry forwarding extras
+            carry /= 2; // carry forwarding extras
             i--;
             j--;
         }
