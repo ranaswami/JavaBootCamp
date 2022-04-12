@@ -4,7 +4,8 @@ import java.util.*;
 
 public class SubsetsWithDup {
     public static void main(String[] args) {
-
+        int[] nums = {1,2,2};
+        System.out.println(Arrays.toString(subsetsWithDup(nums).toArray()));
     }
     static List<List<Integer>> subsetsWithDup(int[] nums) {
         Arrays.sort(nums);
@@ -22,7 +23,7 @@ public class SubsetsWithDup {
         if (i >= 1 && nums[i] == nums[i-1] && !choosePre)
             return;
         op.add(nums[i]);
-        System.out.println(Arrays.toString(op.toArray()));
+        //System.out.println(Arrays.toString(op.toArray()));
         solve(nums, i+1, op, res, true);
         op.remove(op.size() - 1);
     }
