@@ -8,12 +8,38 @@ import java.util.List;
 public class PermuteUnique {
     public static void main(String[] args) {
         int[] nums = {1,1,3};
+        System.out.println(Arrays.toString(permuteUnique1(nums).toArray()));
         System.out.println(Arrays.toString(permuteUnique(nums).toArray()));
     }
     static List<List<Integer>> permuteUnique(int[] nums) {
+        if (nums == null || nums.length == 0){
+            return new ArrayList<>();
+        }
+        Arrays.sort(nums);
+        List<List<Integer>> res = new ArrayList<>();
+        solve(nums, res, new ArrayList<>(), new boolean[nums.length]);
+        return res;
+    }
+    static void solve(int[] nums, List<List<Integer>> res, List<Integer> currList, boolean[] used){
+        if (currList.size() == nums.length){
+            res.add(new ArrayList<>(currList));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (used[i] || i>0 && nums[i] == nums[i-1] && !(used[i-1]))
+                continue;
+            currList.add(nums[i]);
+            used[i] = true;
+            solve(nums, res, currList, used);
+            used[i] = false;
+            currList.remove(currList.size()-1);
+        }
+    }
+    static List<List<Integer>> permuteUnique1(int[] nums) {
         if (nums ==  null || nums.length == 0){
             return new ArrayList<>();
         }
+        Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();
         /**
          List<Integer> numList = new ArrayList<>();
@@ -22,7 +48,7 @@ public class PermuteUnique {
          }
          res.add(new ArrayList<>(numList));
          */
-        solve(nums, res, new ArrayList<>(), new boolean[nums.length]);
+        solve1(nums, res, new ArrayList<>(), new boolean[nums.length]);
         List<List<Integer>> finResult = new ArrayList<>();
         HashSet<List<Integer>> hs = new HashSet<>();
         //HashMap<List<Integer>, Integer> hashMap = new HashMap<>();
@@ -34,7 +60,7 @@ public class PermuteUnique {
         }
         return finResult;
     }
-    static void solve(int[] nums, List<List<Integer>> res, List<Integer> currList, boolean[] used){
+    static void solve1(int[] nums, List<List<Integer>> res, List<Integer> currList, boolean[] used){
         if (currList.size() == nums.length){
             res.add(new ArrayList<>(currList));
             return;
@@ -45,7 +71,7 @@ public class PermuteUnique {
                 continue;
             currList.add(nums[i]);
             used[i] = true;
-            solve(nums, res, currList, used);
+            solve1(nums, res, currList, used);
             used[i] = false;
             currList.remove(currList.size()-1);
         }
