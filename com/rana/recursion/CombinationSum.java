@@ -11,6 +11,7 @@ public class CombinationSum {
         int target = 7;
         List<List<Integer>> res = combinationSum(arr, target);
         System.out.println(Arrays.toString(res.toArray()));
+        System.out.println(Arrays.toString(combinationSum1(arr, target).toArray()));
     }
     static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();
@@ -28,11 +29,29 @@ public class CombinationSum {
         else {
             for (int i = start; i < candidates.length; i++) {
                 tempList.add(candidates[i]);
-                System.out.println(Arrays.toString(tempList.toArray()));
+                //System.out.println(Arrays.toString(tempList.toArray()));
                 backTrack(res, tempList, candidates, remainingSum - candidates[i], i); // not i + 1 because we can reuse same elements
                 tempList.remove(tempList.size() - 1);
             }
         }
     }
-
+    static List<List<Integer>> combinationSum1(int[] candidates, int target) {
+        List<List<Integer>> res = new ArrayList<>();
+        solve(0, candidates, target, res, new ArrayList<>());
+        return res;
+    }
+    static void solve(int i, int[] arr, int target, List<List<Integer>> res, List<Integer> ds){
+        if(i == arr.length){
+            if(target == 0){
+                res.add(new ArrayList<>(ds));
+            }
+            return;
+        }
+        if(arr[i] <= target){
+            ds.add(arr[i]);
+            solve(i, arr, target-arr[i], res, ds);
+            ds.remove(ds.size()-1);
+        }
+        solve(i+1, arr, target, res, ds);
+    }
 }
