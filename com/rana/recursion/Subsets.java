@@ -6,10 +6,10 @@ import java.util.List;
 
 public class Subsets {
     public static void main(String[] args) {
-        //int[] nums = {1,2,3};
-        //System.out.println(Arrays.toString(subsets(nums).toArray()));
-        int x = 5514;
-        System.out.println(count(x));
+        int[] nums = {1,2,3};
+        System.out.println(Arrays.toString(subsets(nums).toArray()));
+        //int x = 5514;
+        //System.out.println(count(x));
 
     }
     static List<List<Integer>> subsets(int[] nums) {
