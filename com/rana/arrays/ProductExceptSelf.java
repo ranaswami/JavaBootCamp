@@ -13,6 +13,7 @@ public class ProductExceptSelf {
     static int[] productExceptSelf1(int[] nums) {//brute force approach
         int[] res = new int[nums.length];
         Arrays.fill(res, 1);//it will [0, 0, 0, 0] if we don't do this step
+        // it will put 1 at each index otherwise it will be zero which we can't use for multiplication
         for (int i = 0; i < res.length; i++) {
             for (int j = 0; j < nums.length; j++) {
                 if (j == i)
@@ -43,7 +44,7 @@ public class ProductExceptSelf {
             if (i < n - 1){
                 right = right * nums[i + 1];
             }
-            res[i] = right;
+            res[i] = res[i] * right;
         }
 
         return res;
