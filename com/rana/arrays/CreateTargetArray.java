@@ -1,4 +1,4 @@
-package com.rana.arrays;
+package arrays;
 //https://leetcode.com/problems/create-target-array-in-the-given-order/
 import java.util.ArrayList;
 import java.util.Arrays;

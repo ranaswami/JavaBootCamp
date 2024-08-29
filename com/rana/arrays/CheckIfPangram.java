@@ -1,4 +1,4 @@
-package com.rana.arrays;
+package arrays;
 //https://leetcode.com/problems/check-if-the-sentence-is-pangram/
 public class CheckIfPangram {
 
