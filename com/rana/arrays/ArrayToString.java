@@ -1,4 +1,4 @@
-package com.rana.arrays;
+package arrays;
 
 import java.util.Arrays;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package com.rana.arrays;
+package arrays;
 //https://leetcode.com/problems/jump-game/
 public class CanJump {
     public static void main(String[] args) {
